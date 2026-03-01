@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--risk-reduction", type=float, required=True)
     parser.add_argument("--control-cost", type=float, required=True)
     parser.add_argument("--json", action="store_true", help="Output a JSON report")
+    parser.add_argument("--out", type=str, help="Write JSON output to a file (e.g., report.json)")
 
     args = parser.parse_args()
 
@@ -40,7 +41,15 @@ def main():
             "decision": "APPROVE" if results.rosi_pct > 0 else "REJECT",
         }
 
-        print(json.dumps(payload, indent=2))
+        output = json.dumps(payload, indent=2)
+
+        if args.out:
+            with open(args.out, "w", encoding="utf-8") as f:
+                f.write(output + "\n")
+            print(f"✅ JSON report written to: {args.out}")
+        else:
+            print(output)
+
         raise SystemExit(0 if results.rosi_pct > 0 else 1)
 
     # --- NORMAL REPORT MODE ---

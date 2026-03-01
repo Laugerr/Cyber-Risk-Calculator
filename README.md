@@ -1,6 +1,10 @@
 # 🛡️ Cyber Risk Calculator (ROSI Model)
 Current Version: **v1.0.0**
 
+---
+🌍 **Live Demo:** https://cyber-risk-calculator-q3rh4akuqyadu98jamyhiq.streamlit.app/
+---
+
 ![Tests](https://github.com/Laugerr/Cyber-Risk-Calculator/actions/workflows/tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![Status](https://img.shields.io/badge/Project-Active-success)

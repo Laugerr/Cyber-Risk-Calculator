@@ -2,7 +2,7 @@
 Current Version: **v1.0.0**
 
 ---
-🌍 **Live Demo:** https://cyber-risk-calculator-q3rh4akuqyadu98jamyhiq.streamlit.app/
+🌍 **Live Demo:** [Open Cyber Risk Calculator](https://cyber-risk-calculator-q3rh4akuqyadu98jamyhiq.streamlit.app/)
 ---
 
 ![Tests](https://github.com/Laugerr/Cyber-Risk-Calculator/actions/workflows/tests.yml/badge.svg)

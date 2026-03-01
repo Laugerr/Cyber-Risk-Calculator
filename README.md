@@ -143,6 +143,35 @@ pytest -q
 
 ---
 
+## 🖥️ Streamlit Dashboard (Web Version)
+
+In addition to the CLI tool, this project includes a simple interactive dashboard built with Streamlit.
+
+### Run locally:
+
+```bash
+python3 -m pip install -r requirements.txt
+streamlit run app.py
+```
+
+Your browser will open automatically at:
+
+```bash
+http://localhost:8501
+```
+
+The dashboard allows you to:
+
+-   Enter risk parameters interactively
+
+-   Visualize ALE before vs after control
+
+-   View risk classification
+
+-   Download a structured JSON report
+
+---
+
 ## 👨‍💻 Author
 
 **Salah Eddine El Manssouri**\

@@ -17,6 +17,7 @@ class RosiResults:
     ale_after: float
     risk_reduction: float
     rosi_pct: float
+    risk_level: str
 
 
 def _validate(i: RosiInputs) -> None:
@@ -31,6 +32,13 @@ def _validate(i: RosiInputs) -> None:
     if i.control_cost <= 0:
         raise ValueError("control_cost must be > 0 (needed for ROSI)")
 
+def classify_risk_level(ale: float) -> str:
+    # simple, readable thresholds (we can make configurable later)
+    if ale >= 100_000:
+        return "HIGH"
+    if ale >= 30_000:
+        return "MEDIUM"
+    return "LOW"
 
 def calculate(i: RosiInputs) -> RosiResults:
     """
@@ -44,7 +52,8 @@ def calculate(i: RosiInputs) -> RosiResults:
 
     sle = i.asset_value * i.exposure_factor
     ale_before = sle * i.aro
-
+    risk_level = classify_risk_level(ale_before)
+    
     reduction_factor = i.risk_reduction_pct / 100.0
     ale_after = ale_before * (1.0 - reduction_factor)
 
@@ -57,4 +66,5 @@ def calculate(i: RosiInputs) -> RosiResults:
         ale_after=ale_after,
         risk_reduction=risk_reduction,
         rosi_pct=rosi_pct,
+        risk_level=risk_level,
     )

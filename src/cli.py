@@ -1,5 +1,7 @@
 import argparse
+import json
 from src.rosi import RosiInputs, calculate
+from dataclasses import asdict
 
 
 def format_eur(value: float) -> str:
@@ -16,6 +18,7 @@ def main():
     parser.add_argument("--aro", type=float, required=True)
     parser.add_argument("--risk-reduction", type=float, required=True)
     parser.add_argument("--control-cost", type=float, required=True)
+    parser.add_argument("--json", action="store_true", help="Output a JSON report")
 
     args = parser.parse_args()
 
@@ -29,9 +32,22 @@ def main():
 
     results = calculate(inputs)
 
+    # --- JSON MODE ---
+    if args.json:
+        payload = {
+            "inputs": asdict(inputs),
+            "results": asdict(results),
+            "decision": "APPROVE" if results.rosi_pct > 0 else "REJECT",
+        }
+
+        print(json.dumps(payload, indent=2))
+        raise SystemExit(0 if results.rosi_pct > 0 else 1)
+
+    # --- NORMAL REPORT MODE ---
     print("\n=== Cyber Risk Analysis Report ===")
     print(f"SLE: {format_eur(results.sle)}")
     print(f"ALE (Before): {format_eur(results.ale_before)}")
+    print(f"Risk Level (based on ALE before): {results.risk_level}")
     print(f"ALE (After): {format_eur(results.ale_after)}")
     print(f"Risk Reduction: {format_eur(results.risk_reduction)}")
     print(f"ROSI: {results.rosi_pct:.2f}%")

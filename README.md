@@ -56,10 +56,11 @@ git clone https://github.com/Laugerr/Cyber-Risk-Calculator.git
 cd Cyber-Risk-Calculator
 python3 -m pip install -r requirements.txt
 ```
+---
 
-### ▶️ Usage
+## ▶️ Usage
 
-## 🖥️ Standard CLI Report
+### 🖥️ Standard CLI Report
 
 ```bash
 python3 -m src.cli \
@@ -70,7 +71,7 @@ python3 -m src.cli \
   --control-cost 20000
 ```
 
-## 📦 JSON Output Mode
+### 📦 JSON Output Mode
 
 ```bash
 python3 -m src.cli \
@@ -82,7 +83,7 @@ python3 -m src.cli \
   --json
 ```
 
-## 📄 Example JSON Output
+### 📄 Example JSON Output
 
 ```json
 {
@@ -106,7 +107,7 @@ python3 -m src.cli \
 ```
 ---
 
-### 🚦 Risk Level Thresholds
+## 🚦 Risk Level Thresholds
 
 Risk classification is based on **ALE (before control implementation)**:
 
@@ -120,14 +121,14 @@ Thresholds are intentionally simple and can be adapted to organizational risk ap
 
 ---
 
-## 🧪 Run Tests
+### 🧪 Run Tests
 ```bash
 pytest -q
 ```
 
 ---
 
-## 📌 Roadmap
+### 📌 Roadmap
 
 -   Add `--out report.json` export option
 
@@ -143,8 +144,8 @@ pytest -q
 
 ## 👨‍💻 Author
 
-Salah Eddine El Manssouri
-MSc Cybersecurity Management
+**Salah Eddine El Manssouri**\
+MSc Cybersecurity Management\
 Vilnius, Lithuania
 
 Focused on Risk Management, Security Economics, and Application Security Engineering.
@@ -153,4 +154,4 @@ Focused on Risk Management, Security Economics, and Application Security Enginee
 
 ## 📜 License
 
-MIT ⚖️
+⚖️ MIT 
